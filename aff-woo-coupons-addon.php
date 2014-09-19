@@ -3,7 +3,7 @@
  * Plugin Name: Affiliate WooCommerce Coupons Addon
  * Plugin URI: http://www.tipsandtricks-hq.com
  * Description: Addon for using WooCommerce Coupons with the affiliate platform plugin
- * Version: 1.1
+ * Version: 1.2
  * Author: Tips and Tricks HQ
  * Author URI: http://www.tipsandtricks-hq.com/
  * Requires at least: 3.0
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit;
 if (!class_exists('AFF_WOO_COUPON_ADDON')){
 
 class AFF_WOO_COUPON_ADDON{
-	var $version = '1.1';
+	var $version = '1.2';
 	var $db_version = '1.0';
 	var $plugin_url;
 	var $plugin_path;
@@ -24,6 +24,8 @@ class AFF_WOO_COUPON_ADDON{
 		$this->includes();
 		$this->loader_operations();
 		//Handle any db install and upgrade task
+                add_filter('aff_woo_before_awarding_commission_filter',array(&$this,'aff_woo_check_coupons'),10,2);
+                
 		add_action( 'init', array( &$this, 'plugin_init' ), 0 );		
 	}
 	
@@ -62,8 +64,7 @@ class AFF_WOO_COUPON_ADDON{
 	function plugin_init(){//Gets run with WP Init is fired
 		//wp_enqueue_style('aff.wc.addon.style', AFF_WOO_COUPON_ADDON_URL.'/...-addon-style.css');
 		//add_action('action_name_goes_here', array(&$this,'custom_action_function_handler'));
-		add_action( 'admin_menu', array( &$this, 'add_admin_menus' ) );
-		add_filter('aff_woo_before_awarding_commission_filter',array(&$this,'aff_woo_check_coupons'),10,2);
+		add_action( 'admin_menu', array( &$this, 'add_admin_menus' ) );		
 	}
 	
 	function add_admin_menus()

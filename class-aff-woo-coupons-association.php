@@ -22,7 +22,8 @@ class AFF_WOO_COUPONS_ASSOC
         }
         foreach($this->assoc_items as $key => $item)
         {
-            if($item->coupon_code == $coupon_code){
+            //if($item->coupon_code == $coupon_code){
+            if(strtolower(trim($item->coupon_code)) == strtolower(trim($coupon_code))){//case insensitive comparison.
                 return $item;
             }
         }
