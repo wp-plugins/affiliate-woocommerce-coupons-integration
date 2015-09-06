@@ -29,7 +29,23 @@ class AFF_WOO_COUPONS_ASSOC
         }
         return new stdClass();
     }
-        
+
+    function find_item_by_ap_id($ap_id)
+    {
+        if(empty($this->assoc_items)){
+            echo "<br />Admin needs to configure some discount coupons and affiliate ID association before it can be used";
+            return new stdClass();
+        }
+        foreach($this->assoc_items as $key => $item)
+        {
+            //if($item->coupon_code == $coupon_code){
+            if(strtolower(trim($item->aff_id)) == strtolower(trim($ap_id))){//case insensitive comparison.
+                return $item;
+            }
+        }
+        return new stdClass();
+    }
+    
     function delete_item_by_id($item_id)
     {
         $item_deleted = false;
@@ -75,7 +91,7 @@ class AFF_WOO_ASSOC_ITEM
     var $coupon_code;
     var $aff_id;
 
-    function AFF_WOO_ASSOC_ITEM($coupon_code, $aff_id)
+    function __construct($coupon_code, $aff_id)
     {
         $this->id = uniqid();
         $this->coupon_code = $coupon_code;

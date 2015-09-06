@@ -3,8 +3,8 @@ Contributors: Tips and Tricks HQ, wptipsntricks
 Donate link: https://www.tipsandtricks-hq.com/wordpress-affiliate-platform-plugin-simple-affiliate-program-for-wordpress-blogsite-1474
 Tags: woocommerce, affiliate, affiliates, affiliate management, integration, affiliate program, affiliate system, affiliate coupons, discount code, coupon, discount
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.2
+Tested up to: 4.3
+Stable tag: 1.3
 License: GPLv2 or later
 
 Integrates the WooCommerce Coupons system with the affiliate platform plugin
@@ -34,6 +34,10 @@ Visit the following affiliate plugin page to see screenshots:
 https://www.tipsandtricks-hq.com/wordpress-affiliate-platform-plugin-simple-affiliate-program-for-wordpress-blogsite-1474
 
 == Changelog ==
+
+= 1.3 =
+* Added a new shortcode to show the coupon associated to the affiliate. 
+[wpap_woo_show_coupon_code]
 
 = 1.2 =
 * Made the coupon code comparison case insensitive.
